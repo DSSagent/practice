@@ -29,8 +29,28 @@ def buy_and_sell_stock(prices):
     print(max_profit)
     print(f"Buy day: {buy_day}, Sell day: {sell_day}")
 
+def duplicate_finder(nums):
+    seen = set()
+    if 1 <= len(nums) <= 1000:
+
+
+        for num in nums:
+            if num in seen:
+                print(f"Duplicate found: {num}")
+                return False
+            seen.add(num)
+        
+        print("No duplicates found.")
+        return True
+    
+    print("Input list unacceptable.")
+        
 def main():
-    prices = [2, 7, 11, 15]
-    buy_and_sell_stock(prices)
+    nums = [2, 7, 11, 15]
+    nums2 = [3, 2, 4, 2]
+    nums3 = []
+    duplicate_finder(nums)
+    duplicate_finder(nums2)
+    duplicate_finder(nums3)
 
 main()
