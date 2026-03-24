@@ -44,13 +44,33 @@ def duplicate_finder(nums):
         return True
     
     print("Input list unacceptable.")
+
+def bit_constraint_no_division(nums):
+    answer = {}
+    answer_piece = 0
+    counter = 0
+    l, r = 0, 1
+    while r < len(nums) :
+        if counter == 0:
+            l = 0
+            r = 1
+        for i in range(len(nums)):
+            if nums[i] == nums[l] + nums[r]:
+                answer[answer_piece] = [l, r]
+                answer_piece += 1
+                l += 1
+                r += 1
+                break
+        if counter == len(nums) - 1:
+            counter += 1
+            break
+    return answer
         
 def main():
     nums = [2, 7, 11, 15]
     nums2 = [3, 2, 4, 2]
     nums3 = []
-    duplicate_finder(nums)
-    duplicate_finder(nums2)
-    duplicate_finder(nums3)
+    print(bit_constraint_no_division(nums))
+
 
 main()
