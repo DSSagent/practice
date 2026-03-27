@@ -56,11 +56,23 @@ def bit_constraint_no_division_attempt(nums):
             answer_list.append(answer)
     return answer_list
 
+def max_subarray_sum(nums):
+    for i, num in enumerate(nums):
+        if i == 0:
+            max_sum = num
+            current_sum = num
+        else:
+            current_sum = max(current_sum + num, num)
+            if current_sum > max_sum:
+                max_sum = current_sum
+    return max_sum
+
 def main():
     nums = [1, 2, 3, 4]
-    nums2 = [3, 2, 4, 2]
+    nums2 = [3, -2, 1, 1]
     nums3 = []
-    print(bit_constraint_no_division_attempt(nums))
+    print(max_subarray_sum(nums))
+    print(max_subarray_sum(nums2))
 
 
 main()
