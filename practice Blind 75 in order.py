@@ -67,12 +67,33 @@ def max_subarray_sum(nums):
                 max_sum = current_sum
     return max_sum
 
+def max_subarray_product(nums):
+    if len(nums) == 0 or len(nums) > 2 * 10**4:
+        return None
+    for i, num in enumerate(nums):
+        if num <= -10 or num >= 10:
+            return None
+        if i == 0:
+            max_product = num
+            current_product = num
+        else:
+            current_product = max(current_product * num, num)
+            if current_product > max_product:
+                max_product = current_product
+    return max_product
+
+
 def main():
     nums = [1, 2, 3, 4]
     nums2 = [3, -2, 1, 1]
-    nums3 = []
-    print(max_subarray_sum(nums))
-    print(max_subarray_sum(nums2))
+    nums3 = [-2, 0, -1]
+    nums4 = [-3,2,5,-1]
+    nums5 = [-10,11]
+    print(max_subarray_product(nums))
+    print(max_subarray_product(nums2))
+    print(max_subarray_product(nums3))
+    print(max_subarray_product(nums4))
+    print(max_subarray_product(nums5))
 
 
 main()
