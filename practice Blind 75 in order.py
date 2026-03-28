@@ -82,18 +82,30 @@ def max_subarray_product(nums):
                 max_product = current_product
     return max_product
 
+def min_sorted_rotated_array(nums):
+    if len(nums) == 0 or len(nums) > 5000:
+        return None
+    for i, num in enumerate(nums):
+        if num <= -5000 or num >= 5000:
+            return None
+    left, right = 0, len(nums) - 1
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] > nums[right]:
+            left = mid + 1
+        else:
+            right = mid
+    return nums[left]
+
 
 def main():
     nums = [1, 2, 3, 4]
-    nums2 = [3, -2, 1, 1]
+    nums2 = [5,6,7]
     nums3 = [-2, 0, -1]
     nums4 = [-3,2,5,-1]
     nums5 = [-10,11]
-    print(max_subarray_product(nums))
-    print(max_subarray_product(nums2))
-    print(max_subarray_product(nums3))
-    print(max_subarray_product(nums4))
-    print(max_subarray_product(nums5))
+    print(min_sorted_rotated_array(nums))
+    print(min_sorted_rotated_array(nums2))
 
 
 main()
