@@ -120,16 +120,37 @@ def search_in_rotated_sorted_array(nums, target):
                 right = mid - 1          
     return -1
 
+def ThreeSum(nums):
+    nums.sort()
+    result = []
+    for i in range(len(nums) - 2):
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+        left, right = i + 1, len(nums) - 1
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            if total == 0:
+                result.append([nums[i], nums[left], nums[right]])
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                left += 1
+                right -= 1
+            elif total < 0:
+                left += 1
+            else:
+                right -= 1
+    return result
+
 def main():
     nums = [1, 2, 3, 4]
-    nums2 = [5,6,7]
+    nums2 = [5,2,-7,-1,3,0,6,8]
     nums3 = [4,5,6,1,2,3]
     nums4 = [-3,2,5,-1]
     nums5 = [-10,11]
-    print(search_in_rotated_sorted_array(nums3, 1))
-    print(search_in_rotated_sorted_array(nums3, 6))
-    print(search_in_rotated_sorted_array(nums3, 9))
-    #print(min_sorted_rotated_array(nums3))
+    print(ThreeSum(nums4))
+    print(ThreeSum(nums2))
 
 
 main()
